@@ -772,7 +772,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 1, guid: da8c53cdd179453f825d51eae44e7d0e, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -793,7 +793,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 2
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 1, guid: da8c53cdd179453f825d51eae44e7d0e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
