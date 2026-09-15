@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 1000010002}
   - component: {fileID: 1000010003}
   - component: {fileID: 1000010004}
+  - component: {fileID: 1000010005}
   m_Layer: 0
   m_Name: PaddleLeft
   m_TagString: Untagged
@@ -336,6 +337,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1000010005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc39759f4d4430c8a689fd3ea502740, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  moveUpKey: 119
+  moveDownKey: 115
+  moveSpeed: 6
 --- !u!1 &1000020001
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,6 +363,7 @@ GameObject:
   - component: {fileID: 1000020002}
   - component: {fileID: 1000020003}
   - component: {fileID: 1000020004}
+  - component: {fileID: 1000020005}
   m_Layer: 0
   m_Name: PaddleRight
   m_TagString: Untagged
@@ -466,3 +483,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1000020005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000020001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc39759f4d4430c8a689fd3ea502740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveUpKey: 273
+  moveDownKey: 274
+  moveSpeed: 6
