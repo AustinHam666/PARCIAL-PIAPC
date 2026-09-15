@@ -47,11 +47,13 @@ A pedido del estudiante se amplia el alcance mas alla de `GDD.md` original (que 
 
 | Paso | Cambio minimo | Quien lo hace | Verificacion |
 |---:|---|---|---|
-| 13 | Crear Canvas (Screen Space - Overlay) con dos Text (o TextMeshPro): marcador izquierdo y derecho | Estudiante, en el Editor | Los textos se ven en el Game view |
-| 14 | Asignar los dos Text creados a `leftScoreText`/`rightScoreText` del `GameManager` en el Inspector | Estudiante, en el Editor | Al anotar un punto en Play Mode, el numero en pantalla se actualiza |
-| 15 | Crear un Particle System como hijo de `Ball` (estela) | Estudiante, en el Editor | La pelota deja una estela visible al moverse |
-| 16 | Crear un Particle System de "explosion" (burst corto, se destruye solo), convertirlo en Prefab, asignarlo a `goalExplosionPrefab` del `GameManager` | Estudiante, en el Editor | Al anotar un gol aparece la explosion en el lugar donde salio la pelota |
-| 17 | Verificar reinicio de partida al llegar a 10 puntos | Estudiante, en Play Mode | Marcador vuelve a 0-0 y la pelota se reinicia al centro |
+| 13 | Marcador visible en pantalla | Implementado en codigo: `GameManager.OnGUI()` dibuja el puntaje de cada jugador con `GUI.Label`, sin Canvas/UI nativo | Al anotar un punto en Play Mode, el numero en pantalla se actualiza |
+| 14 | ~~Asignar Text en Inspector~~ | No aplica (paso 13 no usa Canvas/Text) | - |
+| 15 | Estela de particulas en la pelota | Implementado en codigo: `BallTrailEffect.cs` genera copias fantasma semitransparentes que se desvanecen, sin `ParticleSystem` nativo | La pelota deja una estela visible al moverse en Play Mode |
+| 16 | Explosion de gol | Implementado en codigo: `GoalExplosionEffect.cs` genera fragmentos que salen disparados y se desvanecen al anotar, sin `ParticleSystem` nativo ni prefab | Al anotar un gol aparece la explosion en el lugar donde salio la pelota |
+| 17 | Verificar reinicio de partida al llegar a 10 puntos | Ya implementado en `GameManager.cs` (Etapa 2/3) | Marcador vuelve a 0-0 y la pelota se reinicia al centro |
+
+Nota: se decidio implementar los pasos 13, 15 y 16 enteramente en codigo C# (sin Canvas/UI ni ParticleSystem nativos de Unity) para no repetir el riesgo de corromper la escena que causo el incidente del `PhysicsMaterial2D` (ver `docs/registro-intervencion.md`). El estudiante pidio explicitamente "hacelo todo vos" en vez de armar los componentes visualmente en el Editor.
 
 ## Fuera de alcance (Etapa 3)
 

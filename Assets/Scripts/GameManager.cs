@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,23 +7,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int leftScore;
     [SerializeField] private int rightScore;
     [SerializeField] private int scoreToWin = 10;
-
-    [Header("UI (asignar en el Inspector)")]
-    [SerializeField] private Text leftScoreText;
-    [SerializeField] private Text rightScoreText;
-
-    [Header("Efectos (asignar en el Inspector)")]
-    [SerializeField] private GameObject goalExplosionPrefab;
     [SerializeField] private BallMovement ball;
 
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
-        UpdateScoreUI();
     }
 
     public void RegisterPoint(bool rightPlayerScored, Vector3 goalPosition)
@@ -41,7 +28,6 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Punto anotado. Izquierda: {leftScore} - Derecha: {rightScore}");
 
         SpawnGoalExplosion(goalPosition);
-        UpdateScoreUI();
 
         if (leftScore >= scoreToWin || rightScore >= scoreToWin)
         {
@@ -51,22 +37,15 @@ public class GameManager : MonoBehaviour
 
     private void SpawnGoalExplosion(Vector3 position)
     {
-        if (goalExplosionPrefab != null)
+        if (ball == null)
         {
-            Instantiate(goalExplosionPrefab, position, Quaternion.identity);
-        }
-    }
-
-    private void UpdateScoreUI()
-    {
-        if (leftScoreText != null)
-        {
-            leftScoreText.text = leftScore.ToString();
+            return;
         }
 
-        if (rightScoreText != null)
+        SpriteRenderer ballRenderer = ball.GetComponent<SpriteRenderer>();
+        if (ballRenderer != null && ballRenderer.sprite != null)
         {
-            rightScoreText.text = rightScore.ToString();
+            GoalExplosionEffect.SpawnAt(position, ballRenderer.sprite);
         }
     }
 
@@ -76,11 +55,24 @@ public class GameManager : MonoBehaviour
 
         leftScore = 0;
         rightScore = 0;
-        UpdateScoreUI();
 
         if (ball != null)
         {
             ball.ResetBall();
         }
+    }
+
+    private void OnGUI()
+    {
+        GUIStyle style = new GUIStyle
+        {
+            fontSize = 48,
+            alignment = TextAnchor.UpperCenter,
+            fontStyle = FontStyle.Bold
+        };
+        style.normal.textColor = Color.white;
+
+        GUI.Label(new Rect(Screen.width * 0.25f - 60, 20, 120, 60), leftScore.ToString(), style);
+        GUI.Label(new Rect(Screen.width * 0.75f - 60, 20, 120, 60), rightScore.ToString(), style);
     }
 }

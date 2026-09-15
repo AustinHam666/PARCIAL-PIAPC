@@ -683,6 +683,7 @@ GameObject:
   - component: {fileID: 1000050004}
   - component: {fileID: 1000050005}
   - component: {fileID: 1000050006}
+  - component: {fileID: 1000050007}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -969,7 +970,18 @@ MonoBehaviour:
   leftScore: 0
   rightScore: 0
   scoreToWin: 10
-  leftScoreText: {fileID: 0}
-  rightScoreText: {fileID: 0}
-  goalExplosionPrefab: {fileID: 0}
   ball: {fileID: 1000050006}
+--- !u!114 &1000050007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000050001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32000f8b921c4827bf8e4ceaf15a12c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnInterval: 0.04
+  ghostLifetime: 0.25
