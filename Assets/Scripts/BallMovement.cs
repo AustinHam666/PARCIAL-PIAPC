@@ -25,4 +25,13 @@ public class BallMovement : MonoBehaviour
 
         rb.velocity = direction * speed;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Vector2 incoming = rb.velocity;
+        Vector2 normal = collision.GetContact(0).normal;
+        Vector2 reflected = Vector2.Reflect(incoming, normal);
+
+        rb.velocity = reflected.normalized * speed;
+    }
 }
