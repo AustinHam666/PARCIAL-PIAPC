@@ -8,6 +8,7 @@ public class BallMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector3 startPosition;
+    private Vector2 velocityBeforeCollision;
 
     private void Awake()
     {
@@ -18,6 +19,11 @@ public class BallMovement : MonoBehaviour
     private void Start()
     {
         LaunchInRandomDirection();
+    }
+
+    private void FixedUpdate()
+    {
+        velocityBeforeCollision = rb.velocity;
     }
 
     private void Update()
@@ -51,7 +57,7 @@ public class BallMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector2 incoming = rb.velocity;
+        Vector2 incoming = velocityBeforeCollision.sqrMagnitude > 0.01f ? velocityBeforeCollision : rb.velocity;
         Vector2 normal = collision.GetContact(0).normal;
         Vector2 reflected = Vector2.Reflect(incoming, normal);
 
