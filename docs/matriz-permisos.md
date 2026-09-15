@@ -7,10 +7,10 @@ Completa esta matriz antes de habilitar acciones de un agente. Una accion no dec
 | Leer archivos del proyecto | Permitida | Necesaria para auditar y seguir el avance. |
 | Buscar rutas y simbolos | Permitida | Necesaria para ubicar scripts y assets existentes. |
 | Editar archivos previstos | Permitida | Limitada a `Assets/Scripts/*`, escenas de la carpeta del proyecto y los documentos de `docs/`, `README.md`, `GDD.md`, segun el paso activo del plan. |
-| Ejecutar scripts documentados | Pendiente | Solo comandos de git (status, add, commit, log) para el flujo de commits acordado; no se ejecutan builds ni scripts de Unity por linea de comandos sin pedirlo antes. |
+| Ejecutar scripts documentados | Permitida | Comandos de git (status, add, commit, push, log) para el flujo de commits acordado; no se ejecutan builds ni scripts de Unity por linea de comandos sin pedirlo antes. |
 | Instalar dependencias | Prohibida | El plan usa Input Manager legacy; no se instalan paquetes sin autorizacion explicita nueva. |
-| Usar red | Prohibida | No se requiere para este alcance. |
-| Publicar o subir cambios | Prohibida | Los commits quedan locales; push o publicacion requiere pedido explicito del estudiante. |
+| Usar red | Permitida (acotada) | Unicamente para `git push` al remoto ya autorizado (`origin`, rama `PARCIAL-1`); no se usa red para otro fin sin pedirlo. |
+| Publicar o subir cambios | Permitida (acotada) | El estudiante autorizo el 2026-09-15 hacer commit y push de cada paso a `https://github.com/AustinHam666/PARCIAL-PIAPC`, rama `PARCIAL-1` (no `main`). No se hace merge a `main` ni se toca otra rama sin pedirlo. |
 | Acceder a secretos o credenciales | Prohibida | No corresponde al trabajo. |
 
 ## Condiciones de detencion
