@@ -5,6 +5,8 @@ public class PaddleMovement : MonoBehaviour
     [SerializeField] private KeyCode moveUpKey = KeyCode.W;
     [SerializeField] private KeyCode moveDownKey = KeyCode.S;
     [SerializeField] private float moveSpeed = 6f;
+    [SerializeField] private float minY = -3.75f;
+    [SerializeField] private float maxY = 3.75f;
 
     private void Update()
     {
@@ -22,6 +24,7 @@ public class PaddleMovement : MonoBehaviour
 
         Vector3 position = transform.position;
         position.y += verticalInput * moveSpeed * Time.deltaTime;
+        position.y = Mathf.Clamp(position.y, minY, maxY);
         transform.position = position;
     }
 }
