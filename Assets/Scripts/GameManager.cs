@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         };
         style.normal.textColor = Color.white;
 
-        GUI.Label(new Rect(Screen.width * 0.25f - 60, 20, 120, 60), leftScore.ToString(), style);
-        GUI.Label(new Rect(Screen.width * 0.75f - 60, 20, 120, 60), rightScore.ToString(), style);
+        GUI.Label(new Rect(Screen.width * 0.25f - 60, 60, 120, 60), leftScore.ToString(), style);
+        GUI.Label(new Rect(Screen.width * 0.75f - 60, 60, 120, 60), rightScore.ToString(), style);
     }
 }

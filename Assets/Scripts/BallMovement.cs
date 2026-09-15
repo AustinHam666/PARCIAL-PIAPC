@@ -56,5 +56,13 @@ public class BallMovement : MonoBehaviour
         Vector2 reflected = Vector2.Reflect(incoming, normal);
 
         rb.velocity = reflected.normalized * speed;
+
+        transform.position += (Vector3)(normal * 0.05f);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Vector2 normal = collision.GetContact(0).normal;
+        transform.position += (Vector3)(normal * 0.02f);
     }
 }
