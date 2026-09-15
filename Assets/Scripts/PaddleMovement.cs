@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PaddleMovement : MonoBehaviour
 {
     [SerializeField] private KeyCode moveUpKey = KeyCode.W;
@@ -8,7 +9,14 @@ public class PaddleMovement : MonoBehaviour
     [SerializeField] private float minY = -3.75f;
     [SerializeField] private float maxY = 3.75f;
 
-    private void Update()
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
     {
         float verticalInput = 0f;
 
@@ -22,9 +30,9 @@ public class PaddleMovement : MonoBehaviour
             verticalInput -= 1f;
         }
 
-        Vector3 position = transform.position;
-        position.y += verticalInput * moveSpeed * Time.deltaTime;
-        position.y = Mathf.Clamp(position.y, minY, maxY);
-        transform.position = position;
+        float newY = rb.position.y + verticalInput * moveSpeed * Time.fixedDeltaTime;
+        newY = Mathf.Clamp(newY, minY, maxY);
+
+        rb.MovePosition(new Vector2(rb.position.x, newY));
     }
 }
