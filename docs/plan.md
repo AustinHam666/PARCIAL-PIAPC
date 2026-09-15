@@ -40,3 +40,19 @@ Objetivo: cubrir el resto del comportamiento esperado en `GDD.md` (pelota con ve
 ## Fuera de alcance (Etapa 2)
 
 - Sonido, menus, dificultad progresiva, IA, marcador de victoria final o condicion de fin de partida: excluidos segun `GDD.md`.
+
+## Etapa 3: Puntaje visible, victoria por 10 puntos, particulas y explosion de gol
+
+A pedido del estudiante se amplia el alcance mas alla de `GDD.md` original (que dejaba puntaje/fin de partida fuera). El codigo ya esta preparado (`GameManager.cs`, `BallMovement.cs`); faltan los elementos visuales/nativos de Unity, que se arman en el Editor para evitar repetir el problema de serializacion manual sufrido con `PhysicsMaterial2D` (error "Can't produce abstract class Collider2D").
+
+| Paso | Cambio minimo | Quien lo hace | Verificacion |
+|---:|---|---|---|
+| 13 | Crear Canvas (Screen Space - Overlay) con dos Text (o TextMeshPro): marcador izquierdo y derecho | Estudiante, en el Editor | Los textos se ven en el Game view |
+| 14 | Asignar los dos Text creados a `leftScoreText`/`rightScoreText` del `GameManager` en el Inspector | Estudiante, en el Editor | Al anotar un punto en Play Mode, el numero en pantalla se actualiza |
+| 15 | Crear un Particle System como hijo de `Ball` (estela) | Estudiante, en el Editor | La pelota deja una estela visible al moverse |
+| 16 | Crear un Particle System de "explosion" (burst corto, se destruye solo), convertirlo en Prefab, asignarlo a `goalExplosionPrefab` del `GameManager` | Estudiante, en el Editor | Al anotar un gol aparece la explosion en el lugar donde salio la pelota |
+| 17 | Verificar reinicio de partida al llegar a 10 puntos | Estudiante, en Play Mode | Marcador vuelve a 0-0 y la pelota se reinicia al centro |
+
+## Fuera de alcance (Etapa 3)
+
+- Menus, sonido, animaciones de victoria, guardado de puntajes entre partidas.

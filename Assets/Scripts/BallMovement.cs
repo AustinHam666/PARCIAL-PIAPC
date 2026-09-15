@@ -24,17 +24,17 @@ public class BallMovement : MonoBehaviour
     {
         if (transform.position.x < -courtHalfWidth)
         {
-            GameManager.Instance?.RegisterPoint(rightPlayerScored: true);
+            GameManager.Instance?.RegisterPoint(rightPlayerScored: true, goalPosition: transform.position);
             ResetBall();
         }
         else if (transform.position.x > courtHalfWidth)
         {
-            GameManager.Instance?.RegisterPoint(rightPlayerScored: false);
+            GameManager.Instance?.RegisterPoint(rightPlayerScored: false, goalPosition: transform.position);
             ResetBall();
         }
     }
 
-    private void ResetBall()
+    public void ResetBall()
     {
         transform.position = startPosition;
         LaunchInRandomDirection();
