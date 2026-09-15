@@ -4,16 +4,39 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 7f;
+    [SerializeField] private float courtHalfWidth = 9f;
 
     private Rigidbody2D rb;
+    private Vector3 startPosition;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        startPosition = transform.position;
     }
 
     private void Start()
     {
+        LaunchInRandomDirection();
+    }
+
+    private void Update()
+    {
+        if (transform.position.x < -courtHalfWidth)
+        {
+            GameManager.Instance?.RegisterPoint(rightPlayerScored: true);
+            ResetBall();
+        }
+        else if (transform.position.x > courtHalfWidth)
+        {
+            GameManager.Instance?.RegisterPoint(rightPlayerScored: false);
+            ResetBall();
+        }
+    }
+
+    private void ResetBall()
+    {
+        transform.position = startPosition;
         LaunchInRandomDirection();
     }
 
