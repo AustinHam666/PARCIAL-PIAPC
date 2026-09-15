@@ -1,0 +1,46 @@
+# Reglas oficiales de Unity (basadas en https://github.com/github/gitignore/blob/main/Unity.gitignore)
+
+# Carpetas generadas por el Editor, no versionar
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# Archivos generados de Visual Studio / Rider al abrir el proyecto
+.vs/
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Archivos de asset serializados que no se versionan
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Crashlytics generado
+crashlytics-build.properties
+
+# Archivos ocultos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# No versionar credenciales ni configuraciones locales con secretos
+.env
+.env.*
+!.env.example
